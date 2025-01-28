@@ -1,0 +1,17 @@
+16
+Aasol samples/banana1.txt
+Brick samples/banana2.txt
+Chloe samples/blue1.txt
+Diana samples/blue2.txt
+Erik samples/green1.txt
+Floyd samples/green2.txt
+Gerald samples/orange1.txt
+Hiro samples/orange2.txt
+Ian samples/pink1.txt
+Jane samples/pink2.txt
+Katarina samples/purple1.txt
+Liam samples/purple2.txt
+Monika samples/red1.txt
+Neeson samples/red2.txt
+Otori samples/yellow1.txt
+Priya samples/yellow2.txt
