@@ -1,1 +1,0 @@
-/bin/c++ CMakeFiles/loto.dir/main.cpp.o CMakeFiles/loto.dir/board.cpp.o -o loto 

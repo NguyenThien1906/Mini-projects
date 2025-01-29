@@ -15,9 +15,6 @@ public:
     bool loadFile(const std::string& in_f);
     int getRow(unsigned char num);
 
-    void memcpy_num(unsigned char* dst, int n);
-    void memcpy_numrow(unsigned char* dst, int n);
-
 private:
     void sortNum(int l, int r);
     int sortPartition(int l, int r);
@@ -51,8 +48,6 @@ public:
     void resetProg();
     void updateNextNum(unsigned char num);
     bool isWon();
-
-    void memcpy_prog(unsigned char* dst, int n);
 #ifdef DEBUG_FLAG 
 public: 
 #else
@@ -98,8 +93,6 @@ public:
     void reset();
     void shuffle();
     int getNext();
-
-    void memcpy_deck(unsigned char* dst, int n);
 #ifdef DEBUG_FLAG 
 public: 
 #else

@@ -63,25 +63,6 @@ int Board::getRow(unsigned char k){
     return (id == -1)? -1 : this->num_row[id];
 }
 
-void Board::memcpy_num(unsigned char* dst, int n){
-    if(!dst){
-        throw std::invalid_argument("Board::memcpy_num 1.\n");
-    }
-    n = std::min(n, Board::sizeN);
-    for(auto i=0; i<n; i++){
-        dst[i] = this->num[i];
-    }
-}
-void Board::memcpy_numrow(unsigned char* dst, int n){
-    if(!dst){
-        throw std::invalid_argument("Board::memcpy_numrow 1.\n");
-    }
-    n = std::min(n, Board::sizeN);
-    for(auto i=0; i<n; i++){
-        dst[i] = this->num_row[i];
-    }
-}
-
 void Board::swapIndex(int a, int b){
     auto c = this->num[a];
     this->num[a] = this->num[b];
@@ -174,16 +155,6 @@ bool BoardPlayer::isWon(){
     return this->BoardPlayer::winState;
 }
 
-void BoardPlayer::memcpy_prog(unsigned char* dst, int n){
-    if(!dst){
-        std::invalid_argument("BoardPlayer::memcpy_prog 1.\n");
-    }
-    n = std::min(n, Board::sizeY);
-    for(auto i=0; i<n; i++){
-        dst[i] = this->prog[i];
-    }
-}
-
 void BoardPlayer::printProg(std::ostream& out){
     out << "[";
     for(auto i=0; i<this->Board::sizeY-1; i++){
@@ -263,16 +234,6 @@ int NumberDeck::getNext(){
         throw std::invalid_argument("NumberDeck::getNext 1.\n");
     }
     return this->deck[this->count++];
-}
-
-void NumberDeck::memcpy_deck(unsigned char* dst, int n){
-    if(!dst){
-        throw std::invalid_argument("NumberDeck::memcpy_deck 1.\n");
-    }
-    n = std::min(n, NumberDeck::sizeN);
-    for(auto i=0; i<n; i++){
-        dst[i] = this->deck[i];
-    }
 }
 
 void NumberDeck::printDeck(std::ostream& out){
@@ -360,6 +321,8 @@ void GameMaster::autoPlay(int n_games){
         throw std::invalid_argument("GameMaster::autoPlay 1.\n");
     }
 
+    int progIt = n_games/1000;
+
     for(auto i=0; i<n_games; i++){
         // reset
         deck.reset();
@@ -384,6 +347,11 @@ void GameMaster::autoPlay(int n_games){
             }
 
             this->updateScores(winner_index);
+        }
+
+        if(i == progIt){
+            std::cout << "Iter " << i << std::endl;
+            progIt += n_games/1000;
         }
     }
 }
